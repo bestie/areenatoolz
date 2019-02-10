@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" href="http://opencoding.net/TouchConsolePro/log_assets/v1/style.css">
+		<title>Log Email</title>
+	</head>
+	<body>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="http://opencoding.net/TouchConsolePro/log_assets/v1/script.js"></script>
+
+		<div>
+
+		  	<div id="top-nav">
+		  		<a id="brand" href="http://www.opencoding.net/TouchConsolePro">Powered by TouchConsole Pro</a>
+				<ul class="nav nav-pills" role="tablist">
+					<li role="presentation" class="active"><a href="#log-tab" aria-controls="log" role="tab" data-toggle="tab">Log</a></li>
+					<li role="presentation"><a href="#device-info-tab" aria-controls="info" role="tab" data-toggle="tab">Info</a></li>
+					<li role="presentation" id="screenshot-tab-button"><a href="#screenshot-tab" aria-controls="screenshot" role="tab" data-toggle="tab">Screenshot</a></li>
+					<li role="presentation" id="save-file-tab-button"><a href="#save-file-tab" aria-controls="save-file" role="tab" data-toggle="tab">Save File</a></li>
+				</ul>
+			</div>
+		  	<div id="top-padding"></div>
+
+		  <div class="tab-content">
+		    <div role="tabpanel" class="tab-pane active" id="log-tab">
+
+				<div id="jump-bar">
+					<div class="section">
+
+						<span class="icon exception-icon" title="Exceptions"></span>
+						<span class="count" id="exception-count"></span>
+						<div class="btn-group dropdown">
+						  <button type="button" class="btn btn-default btn-sm" id="previous-exception">
+						    <span class="glyphicon glyphicon-chevron-up"></span>
+						  </button>
+						  <button type="button" class="btn btn-default btn-sm" id="next-exception">
+						    <span class="glyphicon glyphicon-chevron-down"></span>
+						  </button>
+						</div>
+
+						<span class="icon error-icon" title="Errors"></span>
+					    <span class="count" id="error-count"></span>
+						<div class="btn-group dropdown">
+						  <button type="button" class="btn btn-default btn-sm" id="previous-error">
+						    <span class="glyphicon glyphicon-chevron-up"></span>
+						  </button>
+						  <button type="button" class="btn btn-default btn-sm" id="next-error">
+						    <span class="glyphicon glyphicon-chevron-down"></span>
+						  </button>
+						</div>
+
+						<span class="icon assert-icon" title="Asserts"></span>
+					    <span class="count" id="assert-count"></span>
+						<div class="btn-group dropdown">
+						  <button type="button" class="btn btn-default btn-sm" id="previous-assert">
+						    <span class="glyphicon glyphicon-chevron-up"></span>
+						  </button>
+						  <button type="button" class="btn btn-default btn-sm" id="next-assert">
+						    <span class="glyphicon glyphicon-chevron-down"></span>
+						  </button>
+						</div>
+
+						<span class="icon warning-icon" title="Warnings"></span>
+					    <span class="count" id="warning-count"></span>
+						<div class="btn-group dropdown">
+						  <button type="button" class="btn btn-default btn-sm" id="previous-warning">
+						    <span class="glyphicon glyphicon-chevron-up"></span>
+						  </button>
+						  <button type="button" class="btn btn-default btn-sm" id="next-warning">
+						    <span class="glyphicon glyphicon-chevron-down"></span>
+						  </button>
+						</div>
+
+						<span class="icon info-icon" title="Infos"></span>
+					    <span class="count" id="info-count"></span>
+						<div class="btn-group dropdown">
+						  <button type="button" class="btn btn-default btn-sm" id="previous-info">
+						    <span class="glyphicon glyphicon-chevron-up"></span>
+						  </button>
+						  <button type="button" class="btn btn-default btn-sm" id="next-info">
+						    <span class="glyphicon glyphicon-chevron-down"></span>
+						  </button>
+						</div>
+					</div>
+					<div class="section filter-section">
+						<div class="input-group input-group-sm">
+						  <span class="input-group-addon" id="filter-addon">Filter</span>
+						  <input type="text" class="form-control" id="filter-input" placeholder="" aria-describedby="filter-addon">
+						</div>
+					</div>
+					
+
+					<div id="time-settings">
+						<input type="checkbox" id="show-real-time"></input>
+						<label id="show-real-time-label" for="show-real-time">Show device time</label>
+					</div>    
+				</div>
+
+				<div id='log'>
+					<div id="bottom-padding"></div>
+			    </div>
+		    </div>
+		    <div role="tabpanel" class="tab-pane" id="device-info-tab">
+		    	<div class="container">
+			    	<div class="row">
+			    		<div class="col-md-6">
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 class="panel-title">General Information</h3>
+								</div>
+								<table class='table'><tbody>
+<tr><td>Game version</td><td>1.0</td></tr>
+<tr><td>Platform</td><td>WindowsPlayer</td></tr>
+<tr><td>Username</td><td>bestie</td></tr>
+</tbody></table>
+
+							</div>
+
+							<div class="panel panel-primary" id="game-info-panel">
+								<div class="panel-heading">
+									<h3 class="panel-title">Game Information</h3>
+								</div>
+								
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 class="panel-title">Hardware Information</h3>
+								</div>
+								<table class='table'><tbody>
+<tr><td>Operating System</td><td>Windows 10  (10.0.0) 64bit</td></tr>
+<tr><td>Processor Type</td><td>Intel(R) Core(TM) i7-6567U CPU @ 3.30GHz</td></tr>
+<tr><td>Processor Count</td><td>4</td></tr>
+<tr><td>System Memory Size</td><td>16248</td></tr>
+<tr><td>Graphics Memory Size</td><td>2111</td></tr>
+<tr><td>Graphics Device Name</td><td>Intel(R) Iris(R) Graphics 550</td></tr>
+<tr><td>Graphics Device Vendor</td><td>Intel</td></tr>
+<tr><td>Graphics Device ID</td><td>6439</td></tr>
+<tr><td>Graphics Device Vendor ID</td><td>32902</td></tr>
+<tr><td>Graphics Device Version</td><td>Direct3D 11.0 [level 11.1]</td></tr>
+<tr><td>Graphics Shader Level</td><td>50</td></tr>
+<tr><td>Supports Shadows</td><td>True</td></tr>
+<tr><td>Supports Render Textures</td><td>True</td></tr>
+<tr><td>Supports Render To Cubemap</td><td>True</td></tr>
+<tr><td>Supports Image Effects</td><td>True</td></tr>
+<tr><td>Supports 3D Textures</td><td>True</td></tr>
+<tr><td>Supports Compute Shaders</td><td>True</td></tr>
+<tr><td>Supports Instancing</td><td>True</td></tr>
+<tr><td>Supports Sparse Textures</td><td>True</td></tr>
+<tr><td>Supported Render Target Count</td><td>8</td></tr>
+<tr><td>Supports Stencil</td><td>1</td></tr>
+<tr><td>Npot Support</td><td>Full</td></tr>
+<tr><td>Device Unique Identifier</td><td>be9f8a3af030ae9dd1375bf127e2bb1b372789fc</td></tr>
+<tr><td>Device Name</td><td>DESKTOP-CAJ06S7</td></tr>
+<tr><td>Device Model</td><td>MacBookPro13,2 (Apple Inc.)</td></tr>
+<tr><td>Supports Accelerometer</td><td>False</td></tr>
+<tr><td>Supports Gyroscope</td><td>False</td></tr>
+<tr><td>Supports Location Service</td><td>False</td></tr>
+<tr><td>Supports Vibration</td><td>False</td></tr>
+<tr><td>Device Type</td><td>Desktop</td></tr>
+<tr><td>Max Texture Size</td><td>16384</td></tr>
+</tbody></table>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		    <div role="tabpanel" class="tab-pane" id="screenshot-tab">
+		    	
+			</div>
+			<div role="tabpanel" class="tab-pane" id="save-file-tab">
+				<pre></pre>
+			</div>
+		  </div>
+
+		</div>
+
+    </body>
+</html>
